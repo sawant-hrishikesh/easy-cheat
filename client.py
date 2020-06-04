@@ -1,15 +1,29 @@
+"""
+	A tool to send files to remote machine.
+"""
+
 import requests
 import os
 import sys
 import time
 n = len(sys.argv)
 print(n)
-if n != 3:
+if n != 4:
 	print("please give correct args")
 	exit()
 
 key = sys.argv[1]
 path = sys.argv[2]
+op = sys.argv[3]
+
+sep = ''
+if op == 'windows':
+	sep = '\\'
+elif op == 'linux'
+	sep = ''
+else
+	print("please enter your operating sysytem: linux or windows")
+	exit(0)
 print(path)
 sent_files = set()
 while True:
