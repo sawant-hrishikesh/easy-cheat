@@ -7,7 +7,6 @@ import os
 import sys
 import time
 n = len(sys.argv)
-print(n)
 if n != 4:
 	print("please give correct args")
 	exit()
@@ -19,12 +18,12 @@ op = sys.argv[3]
 sep = ''
 if op == 'windows':
 	sep = '\\'
-elif op == 'linux'
-	sep = ''
-else
+elif op == 'linux':
+	sep = '/'
+else:
 	print("please enter your operating sysytem: linux or windows")
 	exit(0)
-print(path)
+
 sent_files = set()
 while True:
 	try:
@@ -37,13 +36,14 @@ while True:
 		try:
 			if file in sent_files:
 				continue
-			file_path = path + '/' + file
-			f = open(file_path, 'rb')
+			file_path = path + sep + file
 
+			f = open(file_path, 'rb')
 			ff = {"myFile": f}
 
 			res = requests.post('http://' + key + ".ngrok.io/upload", files = ff)
 			print(res)
+
 			f.close()
 			sent_files.add(file)
 			time.sleep(1)
